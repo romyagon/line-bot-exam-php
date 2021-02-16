@@ -1,4 +1,12 @@
 <?php
 $con = new mysqli("localhost","root","","mydata");
-echo "เชื่อต่อสำเร็จ";
+if($con)
+{
+echo "MySQL Connected";
+}
+else
+{
+echo "MySQL Connect Failed : Error : ".mysqli_connect_error();
+}
+
 ?>
