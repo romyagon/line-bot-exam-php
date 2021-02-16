@@ -14,18 +14,13 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("จำนวนเงินที่โอน {$pushID}");
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
-echo $pushID;
-//echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
 $sql   = "INSERT INTO userid (userID)
 value ($pushID)";
-if (mysqli_query($conn, $sql)) {
-    echo "New record created successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-  }
-  
-  mysqli_close($conn);
+
+mysqli_close($conn);
 ?>
 
 
